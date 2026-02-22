@@ -14,15 +14,15 @@ export const AuthProvider = ({ children }) => {
     const loggedUser = { email, role };
     setUser(loggedUser);
 
-    if (role === "teacher") navigate("/teacher");
-    else navigate("/student");
+    if (role === "teacher") navigate("/teacher-dashboard");
+    else navigate("/student-dashboard");
   };
 
   const signup = (data) => {
     setUser(data);
     data.role === "teacher"
-      ? navigate("/teacher")
-      : navigate("/student");
+      ? navigate("/teacher-dashboard")
+      : navigate("/student-dashboard");
   };
 
   const logout = () => {

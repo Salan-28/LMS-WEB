@@ -1,93 +1,67 @@
-import Sidebar from "../components/Sidebar";
-import StatCard from "../components/StatCard";
-// import { BookOpen, FileText, Download, Bell } from "lucide-react";
-import { LayoutDashboard, BookOpen, UploadCloud, User } from "lucide-react";
+import React, { useState } from 'react';
 
-export default function createcourse() {
+const CreateCourse = () => {
+  const [courses, setCourses] = useState([]);
+
   return (
-    <div className="min-h-screen flex bg-slate-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gradient-to-b from-indigo-700 to-blue-600 text-white p-6">
-        <h1 className="text-2xl font-bold mb-10">My LMS</h1>
-
-        <nav className="space-y-6">
-          <div className="flex items-center gap-3 opacity-90 hover:opacity-100 cursor-pointer">
-            <LayoutDashboard size={20} />
-            <span>Dashboard</span>
-          </div>
-
-          <div className="flex items-center gap-3 font-semibold cursor-pointer">
-            <BookOpen size={20} />
-            <span>Courses</span>
-          </div>
-
-          <div className="flex items-center gap-3 opacity-90 hover:opacity-100 cursor-pointer">
-            <UploadCloud size={20} />
-            <span>Uploads</span>
-          </div>
-
-          <div className="flex items-center gap-3 opacity-90 hover:opacity-100 cursor-pointer">
-            <User size={20} />
-            <span>Profile</span>
-          </div>
+    <div className="flex min-h-screen font-sans bg-[#f3f4f6]">
+      {/* LEFT SIDEBAR */}
+      <aside className="w-64 bg-[#0015ff] text-white flex flex-col p-6 space-y-8">
+        <div className="text-xl font-bold mb-4 flex items-center gap-2">
+           Dashboard
+        </div>
+        <nav className="flex flex-col space-y-6 opacity-90">
+          <a href="#" className="hover:underline">Dashboard</a>
+          <a href="#" className="font-bold underline">Courses</a>
+          <a href="#" className="hover:underline">Manage Uploads</a>
+          <a href="#" className="hover:underline">Profile</a>
         </nav>
       </aside>
 
-      {/* Main Content */}
+      {/* MAIN CONTENT AREA */}
       <main className="flex-1 p-10">
-        <h2 className="text-3xl font-bold text-slate-800 mb-2">Create a New Course</h2>
-        <p className="text-slate-500 mb-8">
-          Fill in the details below to add a new course to the system.
-        </p>
 
-        {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl">
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                Course Title
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Data Structures"
-                className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">Create Course</h1>
 
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                Course Code
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. CS301"
-                className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
+        {/* CREATE COURSE FORM CARD */}
+        <section className="bg-white rounded-2xl shadow-sm p-8 max-w-4xl border border-gray-100">
+          <h2 className="text-xl font-bold mb-6 text-gray-700">New Course</h2>
+          
+          <div className="space-y-4">
+            <input 
+              type="text" 
+              placeholder="Course Title" 
+              className="w-full p-3 bg-[#e5e7eb] rounded-lg border-none focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            
+            <input 
+              type="text" 
+              placeholder="Course Code (e.g. CS301)" 
+              className="w-full p-3 bg-[#e5e7eb] rounded-lg border-none focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            
+            <textarea 
+              placeholder="Course Description" 
+              rows="5"
+              className="w-full p-3 bg-[#e5e7eb] rounded-lg border-none focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+            />
 
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                Description
-              </label>
-              <textarea
-                rows="4"
-                placeholder="Brief description of the course"
-                className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-
-            <button className="bg-indigo-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-indigo-700 transition">
+            <button className="mt-4 bg-[#0015ff] text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">
               Create Course
             </button>
           </div>
-        </div>
+        </section>
 
-        {/* Course List */}
-        <div className="mt-12">
-          <h3 className="text-xl font-semibold text-slate-800 mb-2">My Courses</h3>
-          <p className="text-slate-500">You haven’t created any courses yet.</p>
-        </div>
+        {/* MY COURSES SECTION */}
+        <section className="mt-12">
+          <h2 className="text-xl font-bold text-gray-700 mb-4">My Courses</h2>
+          <div className="text-gray-500 italic">
+            No courses created yet
+          </div>
+        </section>
       </main>
     </div>
   );
-}
+};
+
+export default CreateCourse;
